@@ -1,14 +1,19 @@
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddLogging(options =>
+{
+    options.AddConsole();  // Enables console logging
+    options.AddDebug();    // Enables Debug output
+});
+
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer(); // Required for minimal APIs
 builder.Services.AddSwaggerGen(); // Add Swagger services
 builder.Services.AddControllers();//Add Controllers services
 
+
 var app = builder.Build();
 
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     
